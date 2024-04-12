@@ -1,0 +1,19 @@
+{
+  "name": "vagnerbomjesus",
+  "version": "1.0.0",
+  "description": "Pagina Portifolio Vagner Bom Jesus",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vagner Bom Jesus",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "http-errors": "^2.0.0",
+    "nodemon": "^3.1.0"
+  }
+}
