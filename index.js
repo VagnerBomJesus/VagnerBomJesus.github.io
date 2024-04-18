@@ -1,6 +1,9 @@
 const express = require("express");
 const nodemailer = require('nodemailer');
 const createError = require("http-errors");
+const bodyParser = require('body-parser');
+const userRoutes = require('./routes/userRoutes');
+
 const PORT = process.env.PORT || 8080;
 
 const app = express();
@@ -66,6 +69,13 @@ app.use((err, req, res, next) => {
     });
   }
 });
+
+/**
+ * ROUTES
+ */
+
+app.use(bodyParser.json());
+app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
 
