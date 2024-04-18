@@ -1,0 +1,12 @@
+[
+  {
+    "id": "f84be187-56c4-4641-b982-0d70d30187b3",
+    "fullName": "João Silva",
+    "email": "joao.silva@example.com",
+    "password": "$2b$10$uYWj4q9gbuxZwUjzZtNEBegVm18BcRvLyhg/0D32MDAjSepR0W8Qm",
+    "accountCreated": "2024-04-18T17:38:01.741Z",
+    "accessLevel": "author",
+    "profilePic": "http://example.com/profilepic.jpg",
+    "bio": "Um breve autor de blogs sobre tecnologia."
+  }
+]

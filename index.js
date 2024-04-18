@@ -1,24 +1,24 @@
+  // Assegure-se de instalar com npm install dotenv
 const express = require("express");
 const nodemailer = require('nodemailer');
 const createError = require("http-errors");
-const bodyParser = require('body-parser');
-const userRoutes = require('./routes/userRoutes');
-
+const userRoutes = require('./routes/userRoutes.js');
+const blogRoutes = require('./routes/blogRoutes.js');
 const PORT = process.env.PORT || 8080;
 
 const app = express();
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
-app.use(express.urlencoded({ extended: true })); // Para parsing application/x-www-form-urlencoded
-app.use(express.json()); // Para parsing application/json
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Configuração do Nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'Gmail', // Use outros como Outlook, Yahoo, etc., ou SMTP direto
+  service: 'Gmail',
   auth: {
-    user: 'vagneripg@gmail.com',
-    pass: 'sua-senha'
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
   }
 });
 
@@ -26,12 +26,11 @@ app.get("/", (req, res) => {
   res.render("index.ejs", {});
 });
 
-
 app.post('/send-email', (req, res) => {
   const { name, email, message } = req.body;
   const mailOptions = {
-    from: 'vagneripg@gmail.com',
-    to: 'vagneripg@gmail.com',
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
     subject: `Mensagem de ${name}`,
     text: `Você recebeu uma mensagem de ${name} (${email}): ${message}`
   };
@@ -39,43 +38,29 @@ app.post('/send-email', (req, res) => {
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
       console.log(error);
-      res.send('error'); // ou renderizar uma página de erro
+      res.send('error');
     } else {
       console.log('Email enviado: ' + info.response);
-      res.send('sent'); // ou renderizar uma página de sucesso
+      res.send('sent');
     }
   });
 });
 
-
 app.get('/cv', (req, res) => {
   res.render('cv', {});
 });
+
+app.use('/users', userRoutes);
+app.use('/blogs', blogRoutes);
+
 app.use((req, res, next) => {
   next(createError(404, "Página Não Encontrada"));
 });
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  if (err.status === 404) {
-    // Serve a página 404.html para erros 404
-    //res.sendFile(__dirname + "/public/404.html");
-    res.render("404.ejs", {});
-  } else {
-    // Responde com json para outros erros
-    res.send({
-      status: err.status || 500,
-      message: err.message,
-    });
-  }
+  res.render("404.ejs", {error: err});
 });
-
-/**
- * ROUTES
- */
-
-app.use(bodyParser.json());
-app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
 

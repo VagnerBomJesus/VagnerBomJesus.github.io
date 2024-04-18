@@ -1,4 +1,4 @@
-const DataHelper = require('../data/DataHelper.js');
+const DataHelper = require('../data/DataHelper');
 const bcrypt = require('bcrypt');
 const uuid = require('uuid');
 

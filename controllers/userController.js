@@ -1,19 +1,25 @@
-const User = require('../models/User.js');
+
+const User = require('../models/User');
 
 exports.register = async (req, res) => {
-    const { username, password } = req.body;
-    if (User.findByUsername(username)) {
-        return res.status(409).send('Usuário já existe!');
+    try {
+        const user = await User.createUser(req.body);
+        res.status(201).send('User registered successfully');
+    } catch (error) {
+        res.status(400).send(error.message);
     }
-    await User.save(username, password);
-    res.send('Usuário registrado com sucesso!');
 };
 
 exports.login = async (req, res) => {
-    const { username, password } = req.body;
-    const valid = await User.validatePassword(username, password);
-    if (!valid) {
-        return res.status(401).send('Usuário ou senha inválidos!');
+    try {
+        const { email, password } = req.body;
+        const valid = await User.validatePassword(email, password);
+        if (valid) {
+            res.send('Login successful');
+        } else {
+            res.status(401).send('Invalid credentials');
+        }
+    } catch (error) {
+        res.status(500).send(error.message);
     }
-    res.send('Login bem sucedido!');
 };
