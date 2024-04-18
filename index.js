@@ -56,7 +56,8 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   if (err.status === 404) {
     // Serve a página 404.html para erros 404
-    res.sendFile(__dirname + "/public/404.html");
+    //res.sendFile(__dirname + "/public/404.html");
+    res.render("404.ejs", {});
   } else {
     // Responde com json para outros erros
     res.send({
