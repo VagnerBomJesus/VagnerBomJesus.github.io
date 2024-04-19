@@ -8,5 +8,15 @@
     "accessLevel": "author",
     "profilePic": "http://example.com/profilepic.jpg",
     "bio": "Um breve autor de blogs sobre tecnologia."
+  },
+  {
+    "id": "3d48708c-52dc-4ced-8f12-48ed07f13a6d",
+    "fullName": "Ana Silva",
+    "email": "ana@example.com",
+    "password": "$2b$10$GnKf6urRoyFPFIutzSkWuOsram0lGUhXjNgHCUTLMvb0G7fdwAzdC",
+    "accountCreated": "2024-04-19T10:07:53.830Z",
+    "accessLevel": "author",
+    "profilePic": "http://example.com/path-to-image.jpg",
+    "bio": "Escritora e entusiasta de tecnologia."
   }
 ]
