@@ -1,17 +1,19 @@
 const multer = require('multer');
+const path = require('path');
 
-// Configuração do armazenamento
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads/'); // Diretório onde os arquivos serão salvos
+        cb(null, path.join(__dirname, '../uploads')); // Certifique-se que este diretório existe ou é criado na inicialização
     },
     filename: function(req, file, cb) {
-        cb(null, new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname);
+        cb(null, `${Date.now()}-${file.originalname}`);
     }
 });
 
+const upload = multer({ storage: storage });
+
 // Filtrar apenas imagens
-const fileFilter = (req, file, cb) => {
+/*const fileFilter = (req, file, cb) => {
     if (file.mimetype.startsWith('image')) {
         cb(null, true);
     } else {
@@ -25,4 +27,7 @@ const upload = multer({
     limits: {
         fileSize: 1024 * 1024 * 5 // Limita o tamanho do arquivo a 5MB
     }
-});
+});*/
+
+
+module.exports = upload;

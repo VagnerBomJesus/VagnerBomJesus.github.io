@@ -4,7 +4,7 @@ const blogController = require('../controllers/blogController');
 const upload = require('../middlewares/upload'); // Importa a configuração do Multer
 
 router.post('/',
-    upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }]), // 1 imagem principal e até 8 imagens adicionais
+    upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }]),
     blogController.createBlog
 );
 
