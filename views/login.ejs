@@ -1,167 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="description"
-      content="Software Developer portfolio highlighting a passion for innovative solutions and a strong commitment to cybersecurity. Showcasing a blend of advanced programming skills and a dedication to data protection and digital safety."
-    />
-    <meta
-      name="keywords"
-      content="Software Developer, Cybersecurity, Data Protection, Innovative Solutions, Programming, Portfolio, Digital Safety, Data Security, Tech Enthusiast, Coding"
-    />
 
-    <meta name="author" content="Vagner Bom Jesus" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description"
+    content="Software Developer portfolio highlighting a passion for innovative solutions and a strong commitment to cybersecurity. Showcasing a blend of advanced programming skills and a dedication to data protection and digital safety." />
+  <meta name="keywords"
+    content="Software Developer, Cybersecurity, Data Protection, Innovative Solutions, Programming, Portfolio, Digital Safety, Data Security, Tech Enthusiast, Coding" />
 
-    <title>Login - Software Developer, Cybersecurity</title>
+  <meta name="author" content="Vagner Bom Jesus" />
 
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/unicons.css" />
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+  <title>Login - Software Developer, Cybersecurity</title>
 
-    <!-- MAIN STYLE -->
-    <link rel="stylesheet" href="css/tooplate-style.css" />
-  </head>
-  <body>
-      <!-- MENU -->
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <div class="container">
-          <a class="navbar-brand" href="/"
-            ><i class="uil uil-user"></i> Vagner Bom Jesus</a
-          >
-  
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a href="#about" class="nav-link"
-                  ><span data-hover="About">About</span></a
-                >
-              </li>
-              <li class="nav-item">
-                          <a href="#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#resume" class="nav-link"><span data-hover="Resume">Resume</span></a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
-                      </li>
-  
-                      
-                      <li class="nav-item">
-                        <a href="/login" class="nav-link"><span data-hover="Login">Login</span></a>
-                    </li>
-            </ul>
-  
-            <ul class="navbar-nav ml-lg-auto">
-              <div class="ml-lg-4">
-                <div
-                  class="color-mode d-lg-flex justify-content-center align-items-center"
-                >
-                  <i class="color-mode-icon"></i>
-                  Color mode
-                </div>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/unicons.css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="css/owl.theme.default.min.css" />
 
-    <!--Login-->
-    <section class="project py-5" id="project">
-      <div class="container">
-        <div class="row">
-            <div class="col-lg-11 text-center mx-auto col-12">
-                <div class="col-lg-8 mx-auto">
-                    <div class="contact-form">
-                        <h2 class="mb-4">Login </h2>
-                
-                        <form action="/users/login" method="POST">
-                          <div class="row">
-                            <div class="col-lg-6 col-12">
-                              <input
-                                type="email"
-                                class="form-control"
-                                name="email"
-                                placeholder="Email"
-                                id="email"
-                                required
-                              />
-                            </div>
-                
-                            <div class="col-lg-6 col-12">
-                              <input
-                                type="password"
-                                name="password"
-                                class="form-control"
-                                id="password"
-                                placeholder="Password"
-                                required
-                              />
-                            </div>
-                
-                            <div class="ml-lg-auto col-lg-5 col-12">
-                              <input
-                                type="submit"
-                                class="form-control submit-btn"
-                                value="Send Button"
-                              />
-                                <a href="/register" class="btn mr-lg-12 form-control custom-btn"
-                                  ><i class="uil  uil-user-plus"></i> Register</a
-                                >
+  <!-- MAIN STYLE -->
+  <link rel="stylesheet" href="css/tooplate-style.css" />
+</head>
 
-                            </div>
-                           
-                            
-                          </div>
-                        </form>
-                      </div>
-                </div>
+<body>
+  <!-- MENU -->
+  <nav class="navbar navbar-expand-sm navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="/"><i class="uil uil-user"></i> Vagner Bom Jesus</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a href="/#about" class="nav-link"><span data-hover="About">About</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="/#project" class="nav-link"><span data-hover="Projects">Projects</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="/#resume" class="nav-link"><span data-hover="Resume">Resume</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="/#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="/login" class="nav-link"><span data-hover="Login">Login</span></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-lg-auto">
+          <div class="ml-lg-4">
+            <div class="color-mode d-lg-flex justify-content-center align-items-center">
+              <i class="color-mode-icon"></i>
+              Color mode
             </div>
+          </div>
+        </ul>
       </div>
-    </section>
-    <div class="col-lg-6 col-12">
-      
     </div>
-    <!-- FOOTER -->
-    <footer class="footer py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-12">
-            <p class="copyright-text text-center">
-              Copyright &copy; 2024 Vagner Bom Jesus . All rights reserved
-            </p>
+  </nav>
+
+  <!--Login-->
+  <section class="project py-5" id="project">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-11 text-center mx-auto col-12">
+          <div class="col-lg-8 mx-auto">
+            <div class="contact-form">
+              <h2 class="mb-4">Sign in, helps you communicate and share with the people in your life.</h2>
+
+              <form action="/users/login" method="POST">
+                <div class="row">
+                  <div class="col-lg-6 col-12">
+                    <input type="email" class="form-control" name="email" placeholder="Email" id="email" required />
+                  </div>
+
+                  <div class="col-lg-6 col-12">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+                      required />
+                  </div>
+
+                  <div class="ml-lg-auto col-lg-5 col-12">
+                    <input type="submit" class="form-control submit-btn" value="Sign in" />
+                    <a href="/register" class="btn mr-lg-12 form-control custom-btn"><i class="uil  uil-user-plus"></i>
+                      Create new account</a>
+
+                  </div>
+
+
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+  </section>
+  <div class="col-lg-6 col-12">
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/Headroom.js"></script>
-    <script src="js/jQuery.headroom.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
+  </div>
+  <!-- FOOTER -->
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-12">
+          <p class="copyright-text text-center">
+            Copyright &copy; 2024 Vagner Bom Jesus . All rights reserved
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/Headroom.js"></script>
+  <script src="js/jQuery.headroom.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/smoothscroll.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
 </html>

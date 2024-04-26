@@ -18,5 +18,29 @@
     "accessLevel": "author",
     "profilePic": "http://example.com/path-to-image.jpg",
     "bio": "Escritora e entusiasta de tecnologia."
+  },
+  {
+    "id": "5204bb0b-d0bd-42af-afb0-8528c351fd60",
+    "fullName": "VAGNER",
+    "email": "VAGNER@GMAIL.COM",
+    "password": "$2b$10$PFpZieN4WszbotVr6fjAtuZ4xE3L5FLWxdbjk1fFuJKhfGAkRMSfe",
+    "accountCreated": "2024-04-26T21:21:14.678Z",
+    "accessLevel": "author"
+  },
+  {
+    "id": "67c07ca0-f196-47f7-93a0-2dd7bfcec857",
+    "fullName": "SOIULA",
+    "email": "SOILA@GMAIL.COM",
+    "password": "$2b$10$IpUanZ8OpIu40C9cqEiKTefl9ThzTUAnhnO40..umipurH6uuXUme",
+    "accountCreated": "2024-04-26T21:34:34.521Z",
+    "accessLevel": "author"
+  },
+  {
+    "id": "eca26d16-0841-4b28-87f9-f05509d2b5fa",
+    "fullName": "Ola",
+    "email": "root@gmail.com",
+    "password": "$2b$10$8D6bsxwImuRzOj3qWWMrHu989dK22d1UT8huyVnT7B/Z3eR13lb8.",
+    "accountCreated": "2024-04-26T21:52:38.710Z",
+    "accessLevel": "author"
   }
 ]
