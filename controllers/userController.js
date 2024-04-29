@@ -13,13 +13,23 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        const valid = await User.validatePassword(email, password);
+        const user = await User.findByEmail(email);  // Corrigido para usar o método correto
+        const valid = user && await User.validatePassword(email, password);
+
         if (valid) {
-            res.send('Login successful');
+            req.session.user = user;  // Armazena informações do usuário na sessão
+            res.redirect('/profile');  // Redireciona para a página do perfil do usuário
         } else {
-            res.status(401).send('Invalid credentials');
+            console.log('Invalid credentials');
+            res.status(401).render('login', { error: 'Invalid credentials' });
         }
     } catch (error) {
+        console.error('Login error:', error);
         res.status(500).send(error.message);
     }
 };
+
+
+
+
+

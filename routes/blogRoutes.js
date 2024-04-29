@@ -1,12 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const blogController = require('../controllers/blogController');
-const upload = require('../middlewares/upload'); // Importa a configuração do Multer
+ 
+const upload = require('../middlewares/multerConfig'); // Ajuste o caminho conforme necessário
 
-router.post('/',
-    upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }]),
-    blogController.createBlog
-);
+// Rota para upload de imagem em um formulário de blog
+router.post('/upload', upload.single('image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.');
+    }
+    res.send(`File uploaded successfully. File path: /uploads/${req.file.filename}`);
+});
+ 
+
 
 router.post('/:blogId/comments', blogController.addComment);
 

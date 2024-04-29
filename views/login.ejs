@@ -77,7 +77,7 @@
             <div class="contact-form">
               <h2 class="mb-4">Sign in, helps you communicate and share with the people in your life.</h2>
 
-              <form action="/users/login" method="POST">
+              <form action="/login" method="POST">
                 <div class="row">
                   <div class="col-lg-6 col-12">
                     <input type="email" class="form-control" name="email" placeholder="Email" id="email" required />
@@ -87,17 +87,41 @@
                     <input type="password" name="password" class="form-control" id="password" placeholder="Password"
                       required />
                   </div>
+                  <% if (error) { %>
 
-                  <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Sign in" />
-                    <a href="/register" class="btn mr-lg-12 form-control custom-btn"><i class="uil  uil-user-plus"></i>
-                      Create new account</a>
+                    <div class="col-lg-6 col-12">
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                          <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+  
+                        <strong>
+                          <%= error %>
+                        </strong>
+                         
+                         
+                          The provided email or password is incorrect.
+                         
+                      </div>
+                    </div>
+                   
+                    <% } %>
 
-                  </div>
+
+                      <div class="ml-lg-auto col-lg-5 col-12">
+                        <a href="#" style="text-decoration: underline;">Recover Password</a>
+
+
+                        <input type="submit" class="form-control submit-btn" value="Sign in" />
+                        <a href="/register" class="btn mr-lg-12 form-control custom-btn"><i
+                            class="uil  uil-user-plus"></i>
+                          Create new account</a>
+                      </div>
 
 
                 </div>
               </form>
+
             </div>
           </div>
         </div>
