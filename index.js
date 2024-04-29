@@ -24,6 +24,7 @@ app.use(session({
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
+//app.set("views", __dirname + "/views/church");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -97,6 +98,12 @@ app.get("/add-comment/:blogId", (req, res) => {
   res.render("add_comment", { blogId: blogId });
 });
 
+
+// church
+app.get("/church", (req, res) => {
+  res.render("church/index", {});
+});
+
 // Middleware de erro 404
 app.use((req, res, next) => {
   next(createError(404, "Página Não Encontrada"));
@@ -107,6 +114,8 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render("error.ejs", { error: err });
 });
+
+
 
 // Iniciando o servidor
 app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
