@@ -41,6 +41,9 @@ app.get("/", (req, res) => {
   res.render("index.ejs", {});
 });
 
+app.get("/politica-de-privacidade", (req, res) => {
+  res.render("politica-de-privacidade.ejs", {});
+});
 app.post("/send-email", (req, res) => {
   const { name, email, message } = req.body;
   const mailOptions = {
