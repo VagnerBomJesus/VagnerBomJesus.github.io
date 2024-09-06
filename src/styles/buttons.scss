@@ -1,0 +1,19 @@
+.btn {
+  @apply inline-block rounded border border-secondary px-8 py-4 font-primary font-bold capitalize transition-all duration-100;
+
+  &-hover {
+    @apply hover:translate-x-1 hover:translate-y-[5px];
+  }
+}
+
+.btn-sm {
+  @apply rounded-sm px-4 py-1.5 text-sm;
+}
+
+.btn-primary {
+  @apply border-secondary bg-primary text-lg leading-8;
+}
+
+.btn-outline-primary {
+  @apply bg-body text-lg leading-8;
+}

@@ -1,0 +1,79 @@
+<section class="section">
+  <div class="container">
+    <div class="relative z-20 mx-auto text-center lg:col-8">
+      <p class="custom-text">
+        Communicate
+      </p>
+      <h1 class="mb-14">Contact</h1>
+    </div>
+    <div class="has-clone rounded-2xl border-2 p-6 sm:p-10 md:p-[4.8rem]">
+      <form action="#" method="POST">
+        <div
+          class="relative before:left-1/2 before:top-0 before:h-full before:w-px before:-translate-x-1/2 before:bg-secondary xl:before:absolute">
+          <div class="row gy-4">
+            <div class="lg:col-6">
+              <div class="mb-10 mr-auto lg:max-w-[532px]">
+                <label for="name" class="form-label"> Name </label>
+                <input id="name" class="form-input shadow" placeholder="Morgan Fedrik" type="text" />
+              </div>
+              <div class="mb-10 mr-auto lg:max-w-[532px]">
+                <label for="email" class="form-label"> Email </label>
+                <input id="email" class="form-input shadow" placeholder="Theme Customization" type="email" />
+              </div>
+              <div class="mr-auto lg:max-w-[532px]">
+                <label for="phone" class="form-label"> Phone </label>
+                <input id="phone" class="form-input shadow" placeholder="Theme Customization" type="tel" />
+              </div>
+            </div>
+            <div class="lg:col-6">
+              <div class="ml-auto h-full lg:max-w-[532px]">
+                <label for="name" class="form-label"> Message </label>
+                <textarea rows="6" placeholder="Please Type Your Message"
+                  class="form-input ml-auto resize-none shadow lg:h-[89%]" name="message"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8">
+          <label for="name" class="form-label">Services </label>
+          <div class="flex flex-wrap gap-5">
+            <div class="rounded shadow inline-block">
+              <input value="responsive web design" id="web-design" class="peer hidden" type="radio" name="status" />
+              <label for="web-design"
+                class="font-bold peer-checked:translate-x-1 peer-checked:translate-y-1 peer-checked:bg-primary bg-body transition-transform duration-300 rounded btn-hover inline-block cursor-pointer font-secondary leading-7 py-4 px-8 border border-secondary">
+                Responsive Web Design
+              </label>
+            </div>
+            <div class="rounded shadow inline-block">
+              <input value="e-commerce" id="e-commerce" class="peer hidden" type="radio" name="status" />
+              <label for="e-commerce"
+                class="font-bold peer-checked:translate-x-1 peer-checked:translate-y-1 peer-checked:bg-primary bg-body transition-transform duration-300 rounded btn-hover inline-block cursor-pointer font-secondary leading-7 py-4 px-8 border border-secondary">
+                E-commerce Development
+              </label>
+            </div>
+            <div class="rounded shadow inline-block">
+              <input value="cms" id="cms" class="peer hidden" type="radio" name="status" />
+              <label for="cms"
+                class="font-bold peer-checked:translate-x-1 peer-checked:translate-y-1 peer-checked:bg-primary bg-body transition-transform duration-300 rounded btn-hover inline-block cursor-pointer font-secondary leading-7 py-4 px-8 border border-secondary">
+                Content Management Stystem
+              </label>
+            </div>
+
+            <div class="rounded shadow inline-block">
+              <input value="database" id="database" class="peer hidden" type="radio" name="status" />
+              <label for="database"
+                class="font-bold peer-checked:translate-x-1 peer-checked:translate-y-1 peer-checked:bg-primary bg-body transition-transform duration-300 rounded btn-hover inline-block cursor-pointer font-secondary leading-7 py-4 px-8 border border-secondary">
+                Database Management Stystem
+              </label>
+            </div>
+          </div>
+          <div class="rounded shadow mt-12">
+            <button class="btn btn-primary w-full btn-hover">Submit Here</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+@@include("footer.html", { "cta": "false" })

@@ -1,0 +1,59 @@
+html {
+  @apply text-base;
+}
+
+body {
+  @apply bg-body font-primary font-normal leading-relaxed text-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-secondary font-bold;
+}
+
+h1,
+.h1 {
+  @apply text-4xl leading-10 sm:text-5xl sm:leading-[55px] md:text-h1-sm md:leading-[100px] lg:text-h1;
+}
+
+h2,
+.h2 {
+  @apply text-4xl leading-[45px] sm:text-5xl sm:leading-[55px] md:text-h2-sm md:leading-[65px] lg:text-h2 lg:leading-[82px];
+}
+
+h3,
+.h3 {
+  @apply text-h3-sm leading-[55px] md:text-h3;
+}
+
+h4,
+.h4 {
+  @apply text-h4 leading-[42px];
+}
+
+h5,
+.h5 {
+  @apply text-h5 leading-[33px];
+}
+
+h6,
+.h6 {
+  @apply text-h6 leading-[26px];
+}
+
+b,
+strong {
+  @apply font-semibold;
+}
+
+code {
+  @apply after:border-none;
+}
+
+p {
+  @apply text-base leading-7 md:text-xl md:leading-[34px];
+}

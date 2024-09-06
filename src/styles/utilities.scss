@@ -1,0 +1,34 @@
+.bg-gradient {
+  @apply bg-gradient-to-b from-[rgba(249,249,249,1)] from-[0.53%] to-white to-[83.28%];
+}
+
+.rounded-xs {
+  @apply rounded-[6px];
+}
+.rounded-sm {
+  @apply rounded-[8px];
+}
+.rounded {
+  @apply rounded-[12px];
+}
+.rounded-lg {
+  @apply rounded-[16px];
+}
+.rounded-xl {
+  @apply rounded-[24px];
+}
+.rounded-2xl {
+  @apply rounded-[32px];
+}
+
+.shadow {
+  @apply shadow-[4px_5px_0px] shadow-secondary;
+}
+
+.shadow-lg {
+  @apply shadow-[8px_8px_0_0] shadow-secondary;
+}
+
+.shadow-xl {
+  @apply shadow-[13px_13px_0] shadow-secondary;
+}

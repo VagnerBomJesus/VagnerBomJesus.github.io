@@ -1,0 +1,91 @@
+<footer class="has-ellipse-lg @@if (context.cta === 'false') {contact-ellipse} relative bg-secondary/90 pb-9 pt-24">
+  <div class="container">
+    <!-- Line -->
+    <div class="line-wrapper footer">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line hidden xl:block"></span>
+      <span class="line hidden xl:block"></span>
+      <span class="line hidden lg:block"></span>
+      <span class="line hidden lg:block"></span>
+      <span class="line hidden md:block"></span>
+      <span class="line hidden lg:block"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+    <!-- /Line -->
+    <div class="relative z-20">
+      <div class="@@if (context.cta === 'false') {hidden} mb-[9.75rem]">
+        <div class="row items-center">
+          <div class="col-8 lg:col-6">
+            <div class="flex items-center space-x-3 sm:space-x-5 md:space-x-8 lg:space-x-12">
+              <div
+                class="h-20 w-14 flex items-end justify-center shadow-[4px_2px_0_0] shadow-primary flex-none overflow-hidden rounded-full bg-theme-light md:h-32 md:w-24 lg:h-[12.0625rem] lg:w-[7.45rem]">
+                <img width="120" height="170" src="images/profile.png" alt="profile">
+              </div>
+              <h1 class="lets-talk">Let’s Work <br />Together</h1>
+            </div>
+          </div>
+          <div class="col-4 text-center lg:col-6 md:text-right">
+            <a class="get-touch has-animate has-arrow relative transition-colors duration-300 before:absolute before:bg-[url('/images/arrow-down.svg')] before:bg-contain before:bg-no-repeat hover:bg-theme-light hover:text-dark"
+              href="contact.html">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <ul class="mb-2 flex space-x-5 lg:space-x-12">
+            <li>
+              <p class="mb-1 text-base text-light md:mb-2 md:text-lg">
+                VERSION
+              </p>
+              <p class="font-secondary text-base font-bold text-white md:text-lg">
+                <span data-version>2022</span> © Edition
+              </p>
+            </li>
+            <li>
+              <p class="mb-1 text-base text-light md:mb-2 md:text-lg">
+                LOCAL TIME
+              </p>
+              <p data-time class="font-secondary text-base font-bold text-white md:text-lg">
+                11:18 AM GMT+2
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <div class="mb-1 md:mb-2">
+            <p class="text-base text-light md:text-lg">SOCIALS</p>
+          </div>
+          <ul class="flex space-x-2 md:space-x-5">
+            <li>
+              <a class="text-base font-bold leading-[34px] text-body hover:text-primary md:text-lg"
+                href="#?">Awwwards</a>
+            </li>
+
+            <li>
+              <a class="text-base font-bold leading-[34px] text-body hover:text-primary md:text-lg"
+                href="#?">Instagram</a>
+            </li>
+            <li>
+              <a class="text-base font-bold leading-[34px] text-body hover:text-primary md:text-lg"
+                href="#?">Dribbble</a>
+            </li>
+            <li>
+              <a class="text-base font-bold leading-[34px] text-body hover:text-primary md:text-lg"
+                href="#?">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Swiper JS -->
+<script src="plugins/swiper/swiper-bundle.js"></script>
+<!-- Svg Injector -->
+<script src="plugins/svg-injector/svg-injector.min.js"></script>
+<!-- Main Script -->
+<script src="scripts/main.js"></script>
