@@ -38,7 +38,7 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", {});
+  res.render("404.ejs", {});
 });
 
 app.get("/politica-de-privacidade", (req, res) => {
