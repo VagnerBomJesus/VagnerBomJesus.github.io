@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portefólio Minimalista Futurista</title>
+  <!-- Bootstrap 5 & Material Design 3 (MDB) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js" defer></script>
+  <!-- Fonte futurista -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    h1, h2 { font-family: 'Orbitron', sans-serif; }
+    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 1000; }
+    .sidebar { max-height: 80vh; overflow-y: auto; }
+    .preview { height: 100px; border: 1px solid #dee2e6; border-radius: .25rem; margin-top: .5rem; }
+  </style>
+</head>
+<body class="bg-body-secondary text-body-primary">
+  <div class="container-fluid py-4">
+    <div class="d-flex justify-content-between mb-3">
+      <button id="lang-toggle" class="btn btn-outline-primary">EN</button>
+      <button id="theme-toggle" class="btn btn-outline-secondary theme-toggle"></button>
+    </div>
+    <div class="row">
+      <!-- Sidebar: Lista de Linguagens -->
+      <aside class="col-12 col-md-3 mb-4 sidebar">
+        <h2 aria-label="Linguagens">Linguagens</h2>
+        <ul id="lang-list" class="list-group"></ul>
+      </aside>
+
+      <!-- Main: Links Úteis e Projetos -->
+      <main class="col-12 col-md-9">
+        <!-- Português -->
+        <section id="pt">
+          <h1 class="text-center mb-3">Vagner Bom Jesus</h1>
+          <p class="text-center">Portefólio minimalista com toques futuristas.</p>
+
+          <h2>Links Úteis</h2>
+          <div class="row gx-3 gy-3 mb-4" aria-label="Links úteis">
+            <div class="col-6 col-md-4">
+              <a href="https://github.com/VagnerBomJesus" target="_blank" class="d-block">GitHub</a>
+              <iframe src="https://github.com/VagnerBomJesus" class="preview w-100"></iframe>
+            </div>
+            <div class="col-6 col-md-4">
+              <a href="https://www.linkedin.com/in/vagnerbomjesus" target="_blank" class="d-block">LinkedIn</a>
+              <iframe src="https://www.linkedin.com/in/vagnerbomjesus" class="preview w-100"></iframe>
+            </div>
+          </div>
+
+          <h2>Projetos Públicos</h2>
+          <div id="repos-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gy-3"></div>
+          <nav aria-label="Paginação de projetos">
+            <ul id="pagination" class="pagination justify-content-center mt-3"></ul>
+          </nav>
+        </section>
+
+        <!-- Inglês -->
+        <section id="en" class="d-none">
+          <h1 class="text-center mb-3">Vagner Bom Jesus</h1>
+          <p class="text-center">Minimalistic portfolio with futuristic touches.</p>
+
+          <h2>Useful Links</h2>
+          <div class="row gx-3 gy-3 mb-4" aria-label="Useful links">
+            <div class="col-6 col-md-4">
+              <a href="https://github.com/VagnerBomJesus" target="_blank" class="d-block">GitHub</a>
+              <iframe src="https://github.com/VagnerBomJesus" class="preview w-100"></iframe>
+            </div>
+            <div class="col-6 col-md-4">
+              <a href="https://www.linkedin.com/in/vagnerbomjesus" target="_blank" class="d-block">LinkedIn</a>
+              <iframe src="https://www.linkedin.com/in/vagnerbomjesus" class="preview w-100"></iframe>
+            </div>
+          </div>
+
+          <h2>Public Projects</h2>
+          <div id="repos-grid-en" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gy-3"></div>
+          <nav aria-label="Project pagination">
+            <ul id="pagination-en" class="pagination justify-content-center mt-3"></ul>
+          </nav>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const username = 'VagnerBomJesus';
+    const perPage = 6;
+    let repos = [];
+    let languages = new Set();
+
+    async function loadRepos() {
+      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+      repos = await res.json();
+      repos.sort((a,b) => b.stargazers_count - a.stargazers_count);
+      repos.forEach(r => r.language && languages.add(r.language));
+      populateLanguages();
+      setupPagination('pt', repos, 'repos-grid', 'pagination');
+      setupPagination('en', repos, 'repos-grid-en', 'pagination-en');
+    }
+
+    function populateLanguages() {
+      const list = document.getElementById('lang-list');
+      Array.from(languages).sort().forEach(lang => {
+        const li = document.createElement('li');
+        li.className = 'list-group-item'; li.textContent = lang;
+        list.appendChild(li);
+      });
+    }
+
+    function setupPagination(lang, data, gridId, pagId) {
+      const grid = document.getElementById(gridId);
+      const pag = document.getElementById(pagId);
+      const total = Math.ceil(data.length / perPage);
+      pag.innerHTML = '';
+      for (let i = 1; i <= total; i++) {
+        const li = document.createElement('li'); li.className = 'page-item';
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        li.addEventListener('click', e => {
+          e.preventDefault(); displayPage(data, grid, i);
+          pag.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
+          li.classList.add('active');
+        }); pag.appendChild(li);
+      }
+      if (pag.firstChild) { pag.firstChild.classList.add('active'); displayPage(data, grid, 1); }
+    }
+
+    function displayPage(data, grid, page) {
+      grid.innerHTML = '';
+      data.slice((page-1)*perPage, page*perPage).forEach(repo => {
+        const col = document.createElement('div'); col.className = 'col';
+        col.innerHTML = `
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${repo.name}</h5>
+              ${repo.language ? `<span class="badge bg-secondary mb-2">${repo.language}</span>` : ''}
+              <a href="${repo.html_url}" target="_blank" class="mt-auto btn btn-primary btn-sm">Ver no GitHub</a>
+            </div>
+          </div>`;
+        grid.appendChild(col);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadRepos();
+      // Idioma
+      document.getElementById('lang-toggle').addEventListener('click', () => {
+        document.getElementById('pt').classList.toggle('d-none');
+        document.getElementById('en').classList.toggle('d-none');
+        const btn = document.getElementById('lang-toggle'); btn.textContent = btn.textContent === 'EN' ? 'PT' : 'EN';
+      });
+      // Tema
+      const themeToggle = document.getElementById('theme-toggle');
+      const html = document.documentElement;
+      const updateBtn = () => {
+        themeToggle.textContent = html.getAttribute('data-bs-theme') === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+      };
+      themeToggle.addEventListener('click', () => {
+        html.setAttribute('data-bs-theme', html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
+        updateBtn();
+      });
+      updateBtn();
+    });
+  </script>
+</body>
+</html>
