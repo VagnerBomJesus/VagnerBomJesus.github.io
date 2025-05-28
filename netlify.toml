@@ -1,3 +1,0 @@
-[build]
-publish = "theme"
-command = "npm run deploy"
