@@ -1,166 +1,453 @@
 <!DOCTYPE html>
-<html lang="pt" data-bs-theme="dark">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portefólio Minimalista Futurista</title>
-  <!-- Bootstrap 5 & Material Design 3 (MDB) -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js" defer></script>
-  <!-- Fonte futurista -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vagner Bom Jesus | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="https://avatars.githubusercontent.com/u/48354097?v=4">
+
   <style>
-    body { font-family: 'Segoe UI', sans-serif; }
-    h1, h2 { font-family: 'Orbitron', sans-serif; }
-    .theme-toggle { position: fixed; top: 1rem; right: 1rem; z-index: 1000; }
-    .sidebar { max-height: 80vh; overflow-y: auto; }
-    .preview { height: 100px; border: 1px solid #dee2e6; border-radius: .25rem; margin-top: .5rem; }
+    body {
+      background-color: #f3f6f9;
+      min-height: 100vh;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1080px;
+      margin: 60px auto 0 auto;
+      padding: 0 12px;
+    }
+
+    .profile-col {
+      flex: 1 1 330px;
+      min-width: 320px;
+      max-width: 390px;
+      order: 1;
+    }
+
+    .links-col {
+      flex: 1 1 360px;
+      min-width: 320px;
+      max-width: 450px;
+      order: 2;
+    }
+
+    .profile-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), 0 1.5px 6px rgba(0, 0, 0, 0.04);
+      padding: 48px 36px 36px 36px;
+      text-align: center;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .avatar {
+      width: 128px;
+      height: 128px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 4px solid #f3f6f9;
+      transition: border 0.2s;
+    }
+
+    .profile-name {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #222;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .profile-role {
+      font-size: 1.05rem;
+      color: #6080a7;
+      margin-bottom: 22px;
+      transition: color 0.2s;
+    }
+
+    .social-row {
+      margin-bottom: 28px;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      font-size: 1.5rem;
+      border: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-btn.linkedin {
+      color: #0A66C2;
+    }
+
+    .social-btn.github {
+      color: #1b1f23;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px) scale(1.10);
+      background: #f3f6f9;
+    }
+
+    .btn-main {
+      min-width: 220px;
+      font-size: 1.08rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      margin: 0 16px;
+      padding: 10px 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .resources-section {
+      margin: 0;
+      margin-bottom: 22px;
+
+    }
+
+    .resource-card {
+      background: #f8fafd;
+      border-radius: 12px;
+      border: 1px solid #e2e7ef;
+      margin-bottom: 18px;
+      padding: 18px 22px 12px 22px;
+      text-align: center;
+      transition: background 0.2s, border 0.2s;
+    }
+
+    .resource-title {
+      font-weight: 700;
+      font-size: 1.14rem;
+      margin-bottom: 2px;
+    }
+
+    .resource-desc {
+      font-size: 0.98rem;
+      color: #6c788b;
+      margin-bottom: 0;
+    }
+
+    .resource-link {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
+
+    .resource-link:hover .resource-card {
+      background: #f1f4fa;
+      border: 1.5px solid #b6cffb;
+      box-shadow: 0 2px 16px #d8e7fd77;
+    }
+
+    .pagination-custom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 18px 0 0 0;
+    }
+
+    .page-btn-custom {
+      background: none;
+      border: none;
+      color: #2176ff;
+      padding: 4px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .page-btn-custom:disabled {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .page-info-custom {
+      background: #e9ecef;
+      border-radius: 6px;
+      padding: 5px 20px;
+      font-size: 1rem;
+      color: #212529;
+      min-width: 150px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 991px) {
+      .main-container {
+        flex-direction: column;
+        max-width: 99vw;
+        gap: 26px;
+        margin: 24px auto 0 auto;
+      }
+
+      .profile-col {
+        order: 1;
+      }
+
+      .links-col {
+        order: 2;
+      }
+
+      .links-col,
+      .profile-col {
+        max-width: 99vw;
+        min-width: 0;
+        flex: 1 1 99vw;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .profile-card {
+        padding: 30px 7px;
+      }
+
+      .btn-main {
+        margin: 8px 0;
+        width: 100%;
+      }
+
+      .main-container {
+        padding: 0 2vw;
+      }
+    }
+
+    /* --- Dark Mode --- */
+    body.dark-mode {
+      background-color: #1b1e23 !important;
+      color: #f3f6f9 !important;
+    }
+
+    body.dark-mode .profile-card {
+      background: #22252c !important;
+      color: #f3f6f9 !important;
+    }
+
+    body.dark-mode .profile-name {
+      color: #fff !important;
+    }
+
+    body.dark-mode .profile-role {
+      color: #90a4c0 !important;
+    }
+
+    body.dark-mode .social-btn {
+      background: #242731 !important;
+      color: #e2e6ed !important;
+    }
+
+    body.dark-mode .btn-main {
+      background: #2e3241 !important;
+      color: #f3f6f9 !important;
+    }
+
+    body.dark-mode .social-btn.linkedin {
+      color: #6ea8ff !important;
+    }
+
+    body.dark-mode .social-btn.github {
+      color: #ddd !important;
+    }
+
+    body.dark-mode .avatar {
+      border: 4px solid #22252c !important;
+    }
+
+    body.dark-mode .btn-main:hover {
+      background: #404356 !important;
+      color: #fff !important;
+    }
+
+    body.dark-mode .resources-section {
+      background: none;
+    }
+
+    body.dark-mode .resource-card {
+      background: #21232a !important;
+      border: 1px solid #343747 !important;
+      color: #dde8ff;
+    }
+
+    body.dark-mode .resource-desc {
+      color: #a0aec8;
+    }
+
+    body.dark-mode .resource-link:hover .resource-card {
+      background: #191a22 !important;
+      border: 1.5px solid #648fff !important;
+      box-shadow: 0 2px 18px #32447433;
+    }
+
+    body.dark-mode .pagination-custom {
+      background: none;
+    }
+
+    body.dark-mode .page-info-custom {
+      background: #232634;
+      color: #f1f1f2;
+    }
+
+    body.dark-mode .page-btn-custom {
+      color: #7eb3ff;
+    }
+
+    body.dark-mode .page-btn-custom:disabled {
+      color: #484b59;
+    }
   </style>
 </head>
-<body class="bg-body-secondary text-body-primary">
-  <div class="container-fluid py-4">
-    <div class="d-flex justify-content-between mb-3">
-      <button id="lang-toggle" class="btn btn-outline-primary">EN</button>
-      <button id="theme-toggle" class="btn btn-outline-secondary theme-toggle"></button>
+
+<body>
+  <div class="d-flex justify-content-end p-3">
+    <button id="toggle-theme" class="btn btn-outline-secondary" title="Toggle dark/light mode">
+      <i class="fa fa-moon"></i>
+    </button>
+  </div>
+  <div class="main-container">
+    <div class="profile-col">
+      <div class="profile-card">
+        <img src="https://avatars.githubusercontent.com/u/48354097?v=4" alt="Vagner Bom Jesus" class="avatar">
+        <div class="profile-name">Vagner Bom Jesus</div>
+        <div class="profile-role">Software Engineering | Flutter Developer | Information Security Enthusiast</div>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/vagnerbomjesus" target="_blank" class="social-btn linkedin"
+            aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/VagnerBomJesus" target="_blank" class="social-btn github" aria-label="GitHub"><i
+              class="fab fa-github"></i></a>
+        </div>
+        <div class="d-flex justify-content-center mt-4 gap-4 flex-wrap">
+          <a href="https://www.linkedin.com/in/vagnerbomjesus/details/experience/"
+            class="btn btn-light btn-main">Experiência</a>
+          <a href="https://www.linkedin.com/in/vagnerbomjesus/details/education/"
+            class="btn btn-light btn-main">Formação acadêmica</a>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <!-- Sidebar: Lista de Linguagens -->
-      <aside class="col-12 col-md-3 mb-4 sidebar">
-        <h2 aria-label="Linguagens">Linguagens</h2>
-        <ul id="lang-list" class="list-group"></ul>
-      </aside>
-
-      <!-- Main: Links Úteis e Projetos -->
-      <main class="col-12 col-md-9">
-        <!-- Português -->
-        <section id="pt">
-          <h1 class="text-center mb-3">Vagner Bom Jesus</h1>
-          <p class="text-center">Portefólio minimalista com toques futuristas.</p>
-
-          <h2>Links Úteis</h2>
-          <div class="row gx-3 gy-3 mb-4" aria-label="Links úteis">
-            <div class="col-6 col-md-4">
-              <a href="https://github.com/VagnerBomJesus" target="_blank" class="d-block">GitHub</a>
-              <iframe src="https://github.com/VagnerBomJesus" class="preview w-100"></iframe>
-            </div>
-            <div class="col-6 col-md-4">
-              <a href="https://www.linkedin.com/in/vagnerbomjesus" target="_blank" class="d-block">LinkedIn</a>
-              <iframe src="https://www.linkedin.com/in/vagnerbomjesus" class="preview w-100"></iframe>
-            </div>
-          </div>
-
-          <h2>Projetos Públicos</h2>
-          <div id="repos-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gy-3"></div>
-          <nav aria-label="Paginação de projetos">
-            <ul id="pagination" class="pagination justify-content-center mt-3"></ul>
-          </nav>
-        </section>
-
-        <!-- Inglês -->
-        <section id="en" class="d-none">
-          <h1 class="text-center mb-3">Vagner Bom Jesus</h1>
-          <p class="text-center">Minimalistic portfolio with futuristic touches.</p>
-
-          <h2>Useful Links</h2>
-          <div class="row gx-3 gy-3 mb-4" aria-label="Useful links">
-            <div class="col-6 col-md-4">
-              <a href="https://github.com/VagnerBomJesus" target="_blank" class="d-block">GitHub</a>
-              <iframe src="https://github.com/VagnerBomJesus" class="preview w-100"></iframe>
-            </div>
-            <div class="col-6 col-md-4">
-              <a href="https://www.linkedin.com/in/vagnerbomjesus" target="_blank" class="d-block">LinkedIn</a>
-              <iframe src="https://www.linkedin.com/in/vagnerbomjesus" class="preview w-100"></iframe>
-            </div>
-          </div>
-
-          <h2>Public Projects</h2>
-          <div id="repos-grid-en" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gx-3 gy-3"></div>
-          <nav aria-label="Project pagination">
-            <ul id="pagination-en" class="pagination justify-content-center mt-3"></ul>
-          </nav>
-        </section>
-      </main>
+    <div class="links-col">
+      <div class="resources-section" id="resources-section">
+        <div class="pagination-custom" id="custom-pagination"></div>
+      </div>
     </div>
   </div>
-
   <script>
-    const username = 'VagnerBomJesus';
-    const perPage = 6;
-    let repos = [];
-    let languages = new Set();
-
-    async function loadRepos() {
-      const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
-      repos = await res.json();
-      repos.sort((a,b) => b.stargazers_count - a.stargazers_count);
-      repos.forEach(r => r.language && languages.add(r.language));
-      populateLanguages();
-      setupPagination('pt', repos, 'repos-grid', 'pagination');
-      setupPagination('en', repos, 'repos-grid-en', 'pagination-en');
-    }
-
-    function populateLanguages() {
-      const list = document.getElementById('lang-list');
-      Array.from(languages).sort().forEach(lang => {
-        const li = document.createElement('li');
-        li.className = 'list-group-item'; li.textContent = lang;
-        list.appendChild(li);
-      });
-    }
-
-    function setupPagination(lang, data, gridId, pagId) {
-      const grid = document.getElementById(gridId);
-      const pag = document.getElementById(pagId);
-      const total = Math.ceil(data.length / perPage);
-      pag.innerHTML = '';
-      for (let i = 1; i <= total; i++) {
-        const li = document.createElement('li'); li.className = 'page-item';
-        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-        li.addEventListener('click', e => {
-          e.preventDefault(); displayPage(data, grid, i);
-          pag.querySelectorAll('.active').forEach(el => el.classList.remove('active'));
-          li.classList.add('active');
-        }); pag.appendChild(li);
+    // Dark/light mode toggle
+    const btn = document.getElementById('toggle-theme');
+    function setTheme(dark) {
+      if (dark) {
+        document.body.classList.add('dark-mode');
+        btn.innerHTML = '<i class="fa fa-sun"></i>';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark-mode');
+        btn.innerHTML = '<i class="fa fa-moon"></i>';
+        localStorage.setItem('theme', 'light');
       }
-      if (pag.firstChild) { pag.firstChild.classList.add('active'); displayPage(data, grid, 1); }
     }
-
-    function displayPage(data, grid, page) {
-      grid.innerHTML = '';
-      data.slice((page-1)*perPage, page*perPage).forEach(repo => {
-        const col = document.createElement('div'); col.className = 'col';
-        col.innerHTML = `
-          <div class="card h-100">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${repo.name}</h5>
-              ${repo.language ? `<span class="badge bg-secondary mb-2">${repo.language}</span>` : ''}
-              <a href="${repo.html_url}" target="_blank" class="mt-auto btn btn-primary btn-sm">Ver no GitHub</a>
-            </div>
+    btn.onclick = function () {
+      setTheme(!document.body.classList.contains('dark-mode'));
+    };
+    // Recursos com paginação personalizada
+    window.addEventListener('DOMContentLoaded', function () {
+      const saved = localStorage.getItem('theme');
+      if (
+        saved === 'dark' ||
+        (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+      // --- Recursos ---
+      const resources = [
+        // Vagner Bom Jesus Apps e Projetos
+        { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Aplicação oficial na Play Store', link: 'https://play.google.com/store/apps/details?id=pt.tbdb.bjtech&pli=1' },
+        { title: '🌿 The Biomimicry Database', desc: 'Plataforma multimodal para biomimética', link: 'https://thebiomimicrydb.vercel.app/' },
+        { title: '📝 Blog no Medium', desc: 'Artigos técnicos e científicos', link: 'https://vagnerbomjesus.medium.com/' },
+        { title: '🤖 TBDB | ChatBot VITA', desc: 'Documentação do Desenvolvimento de uma Plataforma Multimodal para Partilha de Conhecimento ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
+        { title: '🔎 Google Scholar', desc: 'Publicações académicas', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
+      ];
+      // while (resources.length < 30) resources.push({...resources[resources.length%5]});
+      const perPage = 5;
+      let currentPage = 1;
+      const totalPages = Math.ceil(resources.length / perPage);
+      function renderResources(page) {
+        const section = document.getElementById('resources-section');
+        section.querySelectorAll('.resource-link').forEach(e => e.remove());
+        const start = (page - 1) * perPage;
+        const end = Math.min(start + perPage, resources.length);
+        for (let i = start; i < end; i++) {
+          const r = resources[i];
+          const a = document.createElement('a');
+          a.href = r.link;
+          a.target = '_blank';
+          a.className = 'resource-link';
+          a.innerHTML = `<div class="resource-card">
+            <div class="resource-title">${r.title}</div>
+            <div class="resource-desc">${r.desc}</div>
           </div>`;
-        grid.appendChild(col);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadRepos();
-      // Idioma
-      document.getElementById('lang-toggle').addEventListener('click', () => {
-        document.getElementById('pt').classList.toggle('d-none');
-        document.getElementById('en').classList.toggle('d-none');
-        const btn = document.getElementById('lang-toggle'); btn.textContent = btn.textContent === 'EN' ? 'PT' : 'EN';
-      });
-      // Tema
-      const themeToggle = document.getElementById('theme-toggle');
-      const html = document.documentElement;
-      const updateBtn = () => {
-        themeToggle.textContent = html.getAttribute('data-bs-theme') === 'dark' ? 'Modo Claro' : 'Modo Escuro';
-      };
-      themeToggle.addEventListener('click', () => {
-        html.setAttribute('data-bs-theme', html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
-        updateBtn();
-      });
-      updateBtn();
+          section.insertBefore(a, section.querySelector('.pagination-custom'));
+        }
+      }
+      function renderCustomPagination() {
+        const pag = document.getElementById('custom-pagination');
+        pag.innerHTML = '';
+        // Botão Anterior
+        const prev = document.createElement('button');
+        prev.className = 'page-btn-custom';
+        prev.textContent = 'Anterior';
+        prev.disabled = currentPage === 1;
+        prev.onclick = function () {
+          if (currentPage > 1) {
+            currentPage--;
+            renderResources(currentPage);
+            renderCustomPagination();
+          }
+        };
+        pag.appendChild(prev);
+        // Info página
+        const info = document.createElement('span');
+        info.className = 'page-info-custom';
+        info.textContent = `Página ${currentPage} de ${totalPages}`;
+        pag.appendChild(info);
+        // Botão Próxima
+        const next = document.createElement('button');
+        next.className = 'page-btn-custom';
+        next.textContent = 'Próxima';
+        next.disabled = currentPage === totalPages;
+        next.onclick = function () {
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderResources(currentPage);
+            renderCustomPagination();
+          }
+        };
+        pag.appendChild(next);
+      }
+      renderResources(currentPage);
+      renderCustomPagination();
     });
   </script>
 </body>
+
 </html>
