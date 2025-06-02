@@ -1,81 +1,66 @@
-# Portefólio Minimalista Futurista / Minimalistic Futuristic Portfolio
+# Portfolio Vagner Bom Jesus
 
-**Autor / Author**: Vagner Bom Jesus
+Este projeto é um portfolio pessoal responsivo do Vagner Bom Jesus.
+Apresenta informações de perfil, redes sociais, links para aplicações, publicações, artigos, recursos de formação e inclui um sistema de paginação para mostrar muitos recursos de forma elegante.
+
+## Funcionalidades
+
+* **Design moderno e limpo** (HTML5 + CSS3 + Bootstrap 5)
+* **Modo claro e escuro** (toggle com persistência)
+* **Layout desktop em duas colunas** (perfil à esquerda, links/paginação à direita)
+* **Layout mobile em coluna única**
+* **Paginação customizada** para os recursos
+* **Totalmente responsivo**
+* **Links abrem em nova aba**
+* **Dados facilmente editáveis em JS**
+
+## Estrutura do Projeto
+
+```
+- index.html          # Ficheiro principal com todo o código
+- README.md           # Este ficheiro
+```
+
+## Como usar
+
+1. **Faz download ou clona o repositório:**
+
+   ```bash
+   git clone https://github.com/VagnerBomJesus/VagnerBomJesus.git
+   ```
+2. **Abre o ficheiro `index.html` num browser moderno.**
+3. **(Opcional) Personaliza os recursos no array `resources` do JavaScript.**
+
+## Personalização
+
+* **Adicionar recursos:**
+  Basta editar/adicionar objetos no array `resources` (título, descrição, link).
+* **Alterar perfil:**
+  Altera o HTML na coluna do perfil (avatar, nome, role, botões, etc).
+* **Alterar cores:**
+  Personaliza diretamente o CSS do ficheiro.
+
+## Modo escuro
+
+* O botão no canto superior direito alterna entre modo claro e escuro.
+* O estado é guardado no `localStorage`.
+
+## Créditos
+
+Desenvolvido por [Vagner Bom Jesus](https://www.linkedin.com/in/vagnerbomjesus)
 
 ---
 
-## 🇵🇹 Português
+### Demonstração
 
-### Descrição
-
-Este repositório contém um portefólio minimalista com estilo futurista, desenvolvido em HTML, CSS (Bootstrap 5 e Material Design 3 via MDB) e JavaScript. Exibe os teus repositórios públicos do GitHub, permite alternar idioma (PT/EN), tema (claro/escuro) e apresenta pré-visualizações de sites úteis.
-
-### Funcionalidades
-
-* Listagem e paginação dos repositórios públicos de `VagnerBomJesus` (6 por página).
-* Sidebar com lista de linguagens usadas nos projetos.
-* Seção de **Links Úteis** com pré-visualização (iframe).
-* Alternador de **idioma** (Português / English).
-* Alternador de **tema** (claro / escuro).
-* Layout responsivo com grelha de até 3 colunas.
-
-### Instalação e Execução
-
-1. Clona o repositório:
-
-   ```bash
-   git clone https://github.com/VagnerBomJesus/VagnerBomJesus.github.io.git
-   cd VagnerBomJesus.github.io
-   ```
-2. Abre o ficheiro `index.html` diretamente no navegador ou serve com um servidor HTTP simples:
-
-   ```bash
-   # com Python 3
-   python3 -m http.server 8000
-   # depois acessa http://localhost:8000
-   ```
-
-### Personalização
-
-* Edita o utilizador GitHub em `username` no `<script>` se necessário.
-* Adiciona/remova links em `<section id="pt">` e `<section id="en">`.
-* Ajusta estilos no `<style>` ou substitui fontes.
+Basta abrir o ficheiro `index.html` em qualquer browser. Não precisa de backend.
 
 ---
 
-## 🇬🇧 English
+## Exemplo de commit para o repositório
 
-### Description
-
-This repository holds a minimalistic futuristic portfolio built with HTML, CSS (Bootstrap 5 & Material Design 3 via MDB) and JavaScript. It displays your public GitHub repositories, supports language (PT/EN) and theme (light/dark) toggles, and shows previews for useful links.
-
-### Features
-
-* Lists and paginates public repos from `VagnerBomJesus` (6 per page).
-* Sidebar with all programming languages used.
-* **Useful Links** section with live preview (iframe).
-* Language switcher (Português / English).
-* Theme switcher (light / dark).
-* Responsive grid layout up to 3 columns.
-
-### Setup & Run
-
-1. Clone the repo:
-
-   ```bash
-   git clone https://github.com/VagnerBomJesus/VagnerBomJesus.github.io.git
-   cd VagnerBomJesus.github.io
-   ```
-2. Open `index.html` in the browser or serve via a simple HTTP server:
-
-   ```bash
-   # using Python 3
-   python3 -m http.server 8000
-   # then visit http://localhost:8000
-   ```
-
-### Customization
-
-* Change the GitHub username in the `<script>` `username` variable if needed.
-* Add/remove links inside `<section id="pt">` and `<section id="en">`.
-* Tweak styles in `<style>` or swap fonts.
+```sh
+git add index.html README.md
+git commit -m "Portfolio responsivo do Vagner Bom Jesus com modo escuro e paginação de recursos"
+git push origin main
+```
