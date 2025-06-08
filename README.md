@@ -31,6 +31,15 @@ Apresenta informações de perfil, redes sociais, links para aplicações, publi
 2. **Abre o ficheiro `index.html` num browser moderno.**
 3. **(Opcional) Personaliza os recursos no array `resources` do JavaScript.**
 
+## Testes
+
+Este projeto utiliza **Jest** para verificar a paginacao.
+
+```bash
+npm test
+```
+
+
 ## Personalização
 
 * **Adicionar recursos:**
