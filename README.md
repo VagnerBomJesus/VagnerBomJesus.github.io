@@ -26,7 +26,7 @@ Apresenta informações de perfil, redes sociais, links para aplicações, publi
 1. **Faz download ou clona o repositório:**
 
    ```bash
-   git clone https://github.com/VagnerBomJesus/VagnerBomJesus.git
+   git clone https://github.com/VagnerBomJesus/vagnerbomjesus.github.io.git
    ```
 2. **Abre o ficheiro `index.html` num browser moderno.**
 3. **(Opcional) Personaliza os recursos no array `resources` do JavaScript.**
