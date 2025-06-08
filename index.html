@@ -319,7 +319,11 @@
 </head>
 
 <body>
-  <div class="d-flex justify-content-end p-3">
+  <div class="d-flex justify-content-end p-3 gap-2">
+    <select id="language-select" class="form-select form-select-sm" style="width:auto">
+      <option value="en">EN</option>
+      <option value="pt">PT</option>
+    </select>
     <button id="toggle-theme" class="btn btn-outline-secondary" title="Toggle dark/light mode">
       <i class="fa fa-moon"></i>
     </button>
@@ -337,10 +341,10 @@
               class="fab fa-github"></i></a>
         </div>
         <div class="d-flex justify-content-center mt-4 gap-4 flex-wrap">
-          <a href="https://www.linkedin.com/in/vagnerbomjesus/details/experience/"
-            class="btn btn-light btn-main">Experiência</a>
-          <a href="https://www.linkedin.com/in/vagnerbomjesus/details/education/"
-            class="btn btn-light btn-main">Formação acadêmica</a>
+          <a id="btn-experience" href="https://www.linkedin.com/in/vagnerbomjesus/details/experience/"
+              class="btn btn-light btn-main">Experiência</a>
+            <a id="btn-education" href="https://www.linkedin.com/in/vagnerbomjesus/details/education/"
+              class="btn btn-light btn-main">Formação acadêmica</a>
         </div>
       </div>
     </div>
@@ -378,21 +382,70 @@
       } else {
         setTheme(false);
       }
+      const savedLang = localStorage.getItem('lang') || 'en';
       // --- Recursos ---
-      const resources = [
-        // Vagner Bom Jesus Apps e Projetos
-        { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Aplicação oficial APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
-        { title: '🌿 The Biomimicry Database', desc: 'Plataforma multimodal para biomimética', link: 'https://thebiomimicrydb.vercel.app/' },
-        { title: '📝 Blog no Medium', desc: 'Artigos técnicos e científicos', link: 'https://vagnerbomjesus.medium.com/' },
-        { title: '🤖 TBDB | ChatBot VITA', desc: 'Documentação do Desenvolvimento de uma Plataforma Multimodal para Partilha de Conhecimento ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
-        { title: '🔎 Google Scholar', desc: 'Publicações académicas', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
-        // Links Uteis
-        { title: '🌐 ENISA - Agência da União Europeia para a Cibersegurança', desc: 'Website oficial da ENISA', link: 'https://www.enisa.europa.eu/' }
-      ];
-      // while (resources.length < 30) resources.push({...resources[resources.length%5]});
+      const resourcesData = {
+        en: [
+          // Vagner Bom Jesus Apps e Projetos
+          { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Official APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
+          { title: '🌿 The Biomimicry Database', desc: 'Multimodal platform for biomimicry', link: 'https://thebiomimicrydb.vercel.app/' },
+          { title: '📝 Blog on Medium', desc: 'Technical and scientific articles', link: 'https://vagnerbomjesus.medium.com/' },
+          { title: '🤖 TBDB | VITA ChatBot', desc: 'Development documentation of a multimodal knowledge sharing platform ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
+          { title: '🔎 Google Scholar', desc: 'Academic publications', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
+          // Useful Links
+          { title: '🌐 ENISA - European Union Agency for Cybersecurity', desc: 'Official ENISA website', link: 'https://www.enisa.europa.eu/' }
+        ],
+        pt: [
+          // Vagner Bom Jesus Apps e Projetos
+          { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Aplicação oficial APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
+          { title: '🌿 The Biomimicry Database', desc: 'Plataforma multimodal para biomimética', link: 'https://thebiomimicrydb.vercel.app/' },
+          { title: '📝 Blog no Medium', desc: 'Artigos técnicos e científicos', link: 'https://vagnerbomjesus.medium.com/' },
+          { title: '🤖 TBDB | ChatBot VITA', desc: 'Documentação do Desenvolvimento de uma Plataforma Multimodal para Partilha de Conhecimento ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
+          { title: '🔎 Google Scholar', desc: 'Publicações académicas', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
+          // Links Úteis
+          { title: '🌐 ENISA - Agência da União Europeia para a Cibersegurança', desc: 'Website oficial da ENISA', link: 'https://www.enisa.europa.eu/' }
+        ]
+      };
+      const translations = {
+        en: {
+          experience: 'Experience',
+          education: 'Education',
+          prev: 'Previous',
+          next: 'Next',
+          page: (c, t) => `Page ${c} of ${t}`
+        },
+        pt: {
+          experience: 'Experiência',
+          education: 'Formação académica',
+          prev: 'Anterior',
+          next: 'Próxima',
+          page: (c, t) => `Página ${c} de ${t}`
+        }
+      };
+      const langSelect = document.getElementById('language-select');
+      const btnExp = document.getElementById('btn-experience');
+      const btnEdu = document.getElementById('btn-education');
+
+      let currentLanguage = 'en';
+      let resources = resourcesData[currentLanguage];
       const perPage = 5;
       let currentPage = 1;
-      const totalPages = Math.ceil(resources.length / perPage);
+      let totalPages = Math.ceil(resources.length / perPage);
+
+      function setLanguage(lang) {
+        currentLanguage = lang;
+        langSelect.value = lang;
+        localStorage.setItem('lang', lang);
+        resources = resourcesData[lang];
+        totalPages = Math.ceil(resources.length / perPage);
+        btnExp.textContent = translations[lang].experience;
+        btnEdu.textContent = translations[lang].education;
+        renderResources(1);
+        currentPage = 1;
+        renderCustomPagination();
+      }
+      langSelect.addEventListener('change', () => setLanguage(langSelect.value));
+      setLanguage(savedLang);
       function renderResources(page) {
         const section = document.getElementById('resources-section');
         section.querySelectorAll('.resource-link').forEach(e => e.remove());
@@ -414,10 +467,10 @@
       function renderCustomPagination() {
         const pag = document.getElementById('custom-pagination');
         pag.innerHTML = '';
-        // Botão Anterior
+        // Botão Anterior / Previous
         const prev = document.createElement('button');
         prev.className = 'page-btn-custom';
-        prev.textContent = 'Anterior';
+        prev.textContent = translations[currentLanguage].prev;
         prev.disabled = currentPage === 1;
         prev.onclick = function () {
           if (currentPage > 1) {
@@ -430,12 +483,12 @@
         // Info página
         const info = document.createElement('span');
         info.className = 'page-info-custom';
-        info.textContent = `Página ${currentPage} de ${totalPages}`;
+        info.textContent = translations[currentLanguage].page(currentPage, totalPages);
         pag.appendChild(info);
         // Botão Próxima
         const next = document.createElement('button');
         next.className = 'page-btn-custom';
-        next.textContent = 'Próxima';
+        next.textContent = translations[currentLanguage].next;
         next.disabled = currentPage === totalPages;
         next.onclick = function () {
           if (currentPage < totalPages) {
