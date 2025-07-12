@@ -2,6 +2,7 @@
 
 Este projeto é um portfolio pessoal responsivo do Vagner Bom Jesus.
 Apresenta informações de perfil, redes sociais, links para aplicações, publicações, artigos, recursos de formação e inclui um sistema de paginação para mostrar muitos recursos de forma elegante.
+Agora suporta Português e Inglês. No canto superior direito do `index.html` existe um seletor de idioma para alternar entre EN e PT.
 
 ## Funcionalidades
 
@@ -30,6 +31,20 @@ Apresenta informações de perfil, redes sociais, links para aplicações, publi
    ```
 2. **Abre o ficheiro `index.html` num browser moderno.**
 3. **(Opcional) Personaliza os recursos no array `resources` do JavaScript.**
+
+## Instalação
+
+Antes de correr os testes, instala as dependências do projeto:
+
+```bash
+npm install
+```
+
+Depois, executa os testes com:
+
+```bash
+npm test
+```
 
 ## Testes
 
