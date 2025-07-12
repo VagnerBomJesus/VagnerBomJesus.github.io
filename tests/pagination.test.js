@@ -7,6 +7,11 @@ function patchHtml(html) {
     .replace(/<link[^>]*bootstrap[^>]*>/, '')
     .replace(/<link[^>]*font-awesome[^>]*>/, '');
 
+  html = html.replace(/<script[^>]*src="main.js"[^>]*><\/script>/, () => {
+    const js = fs.readFileSync(path.join(__dirname, '..', 'main.js'), 'utf8');
+    return `<script>\n${js}\n<\/script>`;
+  });
+
   const pattern = /renderResources\(currentPage\);\s*renderCustomPagination\(\);/g;
   let last;
   let match;
