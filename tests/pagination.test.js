@@ -55,16 +55,16 @@ test('pagination renders correct number of items and navigation works', async ()
   const { document, renderResources, perPage, resources } = dom.window;
 
   renderResources(1);
-  expect(document.querySelectorAll('.resource-link').length).toBe(perPage);
+  expect(document.querySelectorAll('#projects-section .resource-link').length).toBe(perPage);
 
-  document.querySelector('#custom-pagination button:last-child').click();
+  document.querySelector('#projects-pagination button:last-child').click();
   const remaining = resources.length - perPage;
-  const infoText = document.querySelector('#custom-pagination .page-info-custom').textContent;
+  const infoText = document.querySelector('#projects-pagination .page-info-custom').textContent;
   expect(infoText).toMatch(/Page\s+2/);
-  expect(document.querySelectorAll('.resource-link').length).toBe(remaining);
+  expect(document.querySelectorAll('#projects-section .resource-link').length).toBe(remaining);
 
-  document.querySelector('#custom-pagination button:first-child').click();
-  const infoBack = document.querySelector('#custom-pagination .page-info-custom').textContent;
+  document.querySelector('#projects-pagination button:first-child').click();
+  const infoBack = document.querySelector('#projects-pagination .page-info-custom').textContent;
   expect(infoBack).toMatch(/Page\s+1/);
-  expect(document.querySelectorAll('.resource-link').length).toBe(perPage);
+  expect(document.querySelectorAll('#projects-section .resource-link').length).toBe(perPage);
 });

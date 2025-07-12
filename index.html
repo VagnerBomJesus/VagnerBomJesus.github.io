@@ -124,6 +124,12 @@
 
     }
 
+    .section-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin: 25px 0 10px 0;
+    }
+
     .resource-card {
       background: #f8fafd;
       border-radius: 12px;
@@ -315,6 +321,10 @@
     body.dark-mode .page-btn-custom:disabled {
       color: #484b59;
     }
+
+    body.dark-mode .section-title {
+      color: #f3f6f9;
+    }
   </style>
 </head>
 
@@ -344,13 +354,18 @@
           <a id="btn-experience" href="https://www.linkedin.com/in/vagnerbomjesus/details/experience/"
               class="btn btn-light btn-main">Experiência</a>
             <a id="btn-education" href="https://www.linkedin.com/in/vagnerbomjesus/details/education/"
-              class="btn btn-light btn-main">Formação acadêmica</a>
+              class="btn btn-light btn-main">Formação académica</a>
         </div>
       </div>
     </div>
     <div class="links-col">
-      <div class="resources-section" id="resources-section">
-        <div class="pagination-custom" id="custom-pagination"></div>
+      <div class="resources-section" id="projects-section">
+        <div class="section-title" id="title-projects"></div>
+        <div class="pagination-custom" id="projects-pagination"></div>
+      </div>
+      <div class="resources-section" id="links-section">
+        <div class="section-title" id="title-links"></div>
+        <div class="pagination-custom" id="links-pagination"></div>
       </div>
     </div>
   </div>
@@ -385,26 +400,32 @@
       const savedLang = localStorage.getItem('lang') || 'en';
       // --- Recursos ---
       const resourcesData = {
-        en: [
-          // Vagner Bom Jesus Apps e Projetos
-          { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Official APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
-          { title: '🌿 The Biomimicry Database', desc: 'Multimodal platform for biomimicry', link: 'https://thebiomimicrydb.vercel.app/' },
-          { title: '📝 Blog on Medium', desc: 'Technical and scientific articles', link: 'https://vagnerbomjesus.medium.com/' },
-          { title: '🤖 TBDB | VITA ChatBot', desc: 'Development documentation of a multimodal knowledge sharing platform ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
-          { title: '🔎 Google Scholar', desc: 'Academic publications', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
-          // Useful Links
-          { title: '🌐 ENISA - European Union Agency for Cybersecurity', desc: 'Official ENISA website', link: 'https://www.enisa.europa.eu/' }
-        ],
-        pt: [
-          // Vagner Bom Jesus Apps e Projetos
-          { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Aplicação oficial APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
-          { title: '🌿 The Biomimicry Database', desc: 'Plataforma multimodal para biomimética', link: 'https://thebiomimicrydb.vercel.app/' },
-          { title: '📝 Blog no Medium', desc: 'Artigos técnicos e científicos', link: 'https://vagnerbomjesus.medium.com/' },
-          { title: '🤖 TBDB | ChatBot VITA', desc: 'Documentação do Desenvolvimento de uma Plataforma Multimodal para Partilha de Conhecimento ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
-          { title: '🔎 Google Scholar', desc: 'Publicações académicas', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
-          // Links Úteis
-          { title: '🌐 ENISA - Agência da União Europeia para a Cibersegurança', desc: 'Website oficial da ENISA', link: 'https://www.enisa.europa.eu/' }
-        ]
+        en: {
+          projects: [
+            { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Official APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
+            { title: '🌿 The Biomimicry Database', desc: 'Multimodal platform for biomimicry', link: 'https://thebiomimicrydb.vercel.app/' },
+            { title: '📝 Blog on Medium', desc: 'Technical and scientific articles', link: 'https://vagnerbomjesus.medium.com/' },
+            { title: '🤖 TBDB | VITA ChatBot', desc: 'Development documentation of a multimodal knowledge sharing platform ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
+            { title: '🔎 Google Scholar', desc: 'Academic publications', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
+            { title: '🛠 Portfolio Source', desc: 'Code for this portfolio', link: 'https://github.com/VagnerBomJesus/vagnerbomjesus.github.io' }
+          ],
+          links: [
+            { title: '🌐 ENISA - European Union Agency for Cybersecurity', desc: 'Official ENISA website', link: 'https://www.enisa.europa.eu/' }
+          ]
+        },
+        pt: {
+          projects: [
+            { title: '📱 TBDB - The Biomimicry Database (Android)', desc: 'Aplicação oficial APK', link: 'https://apkpure.com/th/t-b-d-b/pt.tbdb.bjtech/' },
+            { title: '🌿 The Biomimicry Database', desc: 'Plataforma multimodal para biomimética', link: 'https://thebiomimicrydb.vercel.app/' },
+            { title: '📝 Blog no Medium', desc: 'Artigos técnicos e científicos', link: 'https://vagnerbomjesus.medium.com/' },
+            { title: '🤖 TBDB | ChatBot VITA', desc: 'Documentação do Desenvolvimento de uma Plataforma Multimodal para Partilha de Conhecimento ...', link: 'https://bdigital.ipg.pt/dspace/bitstream/10314/10107/1/CM%20-%20Vagner%20B%20Jesus.pdf' },
+            { title: '🔎 Google Scholar', desc: 'Publicações académicas', link: 'https://scholar.google.com/citations?user=K-IfdJoAAAAJ&hl=pt-PT&oi=ao' },
+            { title: '🛠 Código deste portfolio', desc: 'Repositório no GitHub', link: 'https://github.com/VagnerBomJesus/vagnerbomjesus.github.io' }
+          ],
+          links: [
+            { title: '🌐 ENISA - Agência da União Europeia para a Cibersegurança', desc: 'Website oficial da ENISA', link: 'https://www.enisa.europa.eu/' }
+          ]
+        }
       };
       const translations = {
         en: {
@@ -412,47 +433,64 @@
           education: 'Education',
           prev: 'Previous',
           next: 'Next',
-          page: (c, t) => `Page ${c} of ${t}`
+          page: (c, t) => `Page ${c} of ${t}`,
+          projects: 'Projects',
+          useful: 'Useful Links'
         },
         pt: {
           experience: 'Experiência',
           education: 'Formação académica',
           prev: 'Anterior',
           next: 'Próxima',
-          page: (c, t) => `Página ${c} de ${t}`
+          page: (c, t) => `Página ${c} de ${t}`,
+          projects: 'Projetos',
+          useful: 'Links Úteis'
         }
       };
       const langSelect = document.getElementById('language-select');
       const btnExp = document.getElementById('btn-experience');
       const btnEdu = document.getElementById('btn-education');
 
+      const titleProjects = document.getElementById('title-projects');
+      const titleLinks = document.getElementById('title-links');
+
       let currentLanguage = 'en';
-      let resources = resourcesData[currentLanguage];
+      let projectResources = resourcesData[currentLanguage].projects;
+      let usefulResources = resourcesData[currentLanguage].links;
+      let resources = projectResources;
       const perPage = 5;
-      let currentPage = 1;
-      let totalPages = Math.ceil(resources.length / perPage);
+      let currentProjectPage = 1;
+      let currentLinksPage = 1;
 
       function setLanguage(lang) {
         currentLanguage = lang;
         langSelect.value = lang;
         localStorage.setItem('lang', lang);
-        resources = resourcesData[lang];
-        totalPages = Math.ceil(resources.length / perPage);
+        projectResources = resourcesData[lang].projects;
+        usefulResources = resourcesData[lang].links;
+        resources = projectResources;
         btnExp.textContent = translations[lang].experience;
         btnEdu.textContent = translations[lang].education;
-        renderResources(1);
-        currentPage = 1;
-        renderCustomPagination();
+        titleProjects.textContent = translations[lang].projects;
+        titleLinks.textContent = translations[lang].useful;
+        currentProjectPage = 1;
+        currentLinksPage = 1;
+        renderResources(currentProjectPage, 'projects');
+        renderCustomPagination('projects');
+        renderResources(currentLinksPage, 'links');
+        renderCustomPagination('links');
       }
       langSelect.addEventListener('change', () => setLanguage(langSelect.value));
       setLanguage(savedLang);
-      function renderResources(page) {
-        const section = document.getElementById('resources-section');
-        section.querySelectorAll('.resource-link').forEach(e => e.remove());
+      function renderResources(page, section = 'projects') {
+        const data = section === 'projects' ? projectResources : usefulResources;
+        const secId = section === 'projects' ? 'projects-section' : 'links-section';
+        const sectionEl = document.getElementById(secId);
+        sectionEl.querySelectorAll('.resource-link').forEach(e => e.remove());
         const start = (page - 1) * perPage;
-        const end = Math.min(start + perPage, resources.length);
+        const end = Math.min(start + perPage, data.length);
         for (let i = start; i < end; i++) {
-          const r = resources[i];
+          const r = data[i];
           const a = document.createElement('a');
           a.href = r.link;
           a.target = '_blank';
@@ -461,13 +499,16 @@
             <div class="resource-title">${r.title}</div>
             <div class="resource-desc">${r.desc}</div>
           </div>`;
-          section.insertBefore(a, section.querySelector('.pagination-custom'));
+          sectionEl.insertBefore(a, sectionEl.querySelector('.pagination-custom'));
         }
       }
-      function renderCustomPagination() {
-        const pag = document.getElementById('custom-pagination');
+      function renderCustomPagination(section = 'projects') {
+        const data = section === 'projects' ? projectResources : usefulResources;
+        const pagId = section === 'projects' ? 'projects-pagination' : 'links-pagination';
+        const pag = document.getElementById(pagId);
+        let currentPage = section === 'projects' ? currentProjectPage : currentLinksPage;
+        const totalPages = Math.ceil(data.length / perPage);
         pag.innerHTML = '';
-        // Botão Anterior / Previous
         const prev = document.createElement('button');
         prev.className = 'page-btn-custom';
         prev.textContent = translations[currentLanguage].prev;
@@ -475,17 +516,16 @@
         prev.onclick = function () {
           if (currentPage > 1) {
             currentPage--;
-            renderResources(currentPage);
-            renderCustomPagination();
+            if (section === 'projects') currentProjectPage = currentPage; else currentLinksPage = currentPage;
+            renderResources(currentPage, section);
+            renderCustomPagination(section);
           }
         };
         pag.appendChild(prev);
-        // Info página
         const info = document.createElement('span');
         info.className = 'page-info-custom';
         info.textContent = translations[currentLanguage].page(currentPage, totalPages);
         pag.appendChild(info);
-        // Botão Próxima
         const next = document.createElement('button');
         next.className = 'page-btn-custom';
         next.textContent = translations[currentLanguage].next;
@@ -493,14 +533,18 @@
         next.onclick = function () {
           if (currentPage < totalPages) {
             currentPage++;
-            renderResources(currentPage);
-            renderCustomPagination();
+            if (section === 'projects') currentProjectPage = currentPage; else currentLinksPage = currentPage;
+            renderResources(currentPage, section);
+            renderCustomPagination(section);
           }
         };
         pag.appendChild(next);
       }
+      let currentPage = currentProjectPage;
       renderResources(currentPage);
       renderCustomPagination();
+      renderResources(currentLinksPage, 'links');
+      renderCustomPagination('links');
     });
   </script>
 </body>
